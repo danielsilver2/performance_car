@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,6 +48,17 @@ public class PacienteController {
         
         paciente = this.pacienteRepository.save(paciente);
         
+        return new ModelAndView("redirect:/paciente");
+    }
+    
+    @GetMapping(value="alterar/{id}")
+    public ModelAndView alterarForm(@PathVariable("id") Paciente paciente) {
+        return new ModelAndView("paciente/form","paciente",paciente);
+    }
+    
+    @GetMapping(value="remover/{id}")
+    public ModelAndView remover(@PathVariable ("id") Long id, RedirectAttributes redirect) {
+        this.pacienteRepository.deleteById(id);
         return new ModelAndView("redirect:/paciente");
     }
 }
