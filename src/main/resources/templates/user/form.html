@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:include="layout :: htmlhead"></head>
+    <body>
+        <div class="container">
+            <nav th:replace="layout :: menu">(menu)</nav>
+            <div class="border border-dark">
+                <form th:action="@{/user/save}" th:object="${user}" action="#" method="post">
+                    <input type="hidden" id="txtid" th:field="*{id}" />
+                    <div class="form-group">
+                        <label for="txtnome">Nome</label>
+                        <input type="text" th:field="*{name}" class="form-control" id="txtnome" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtphone">Telefone</label>
+                        <input type="text" th:field="*{phone}" class="form-control" id="txtphone" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtcpf">CPF</label>
+                        <input type="text" th:field="*{cpf}" class="form-control" id="txtcpf" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtemail">E-mail</label>
+                        <input type="text" th:field="*{email}" class="form-control" id="txtemail" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="txttype">Type</label>
+                        <input type="text" th:field="*{type}" class="form-control" id="txtnome" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtpostal">CEP</label>
+                        <input type="text" th:field="*{postal_code}" class="form-control" id="txtpostal" placeholder="Nome">
+                    </div>
+					<div class="form-group">
+                        <label for="txthousen">Número da casa</label>
+                        <input type="text" th:field="*{house_number}" class="form-control" id="txthousen" placeholder="Nome">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+        <div th:include="layout :: footer" id="footer">(footer)</div>
+    </body>
+</html>
