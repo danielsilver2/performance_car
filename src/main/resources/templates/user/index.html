@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head th:include="layout :: htmlhead"></head>
+    <head th:include="layout :: htmlhead">
+    	  <meta charset="UTF-8">
+    </head>
     <body>
         <div class="container">
             <nav th:replace="layout :: menu">(menu)</nav>
@@ -10,13 +12,16 @@
                     <thead class="thead-light"> 
                         <tr>
                             <th scope="col">Nome</th>
-                            <th scope="col">Sexo</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Telefone</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr scope="row" th:each="user : ${users}">
                             <td th:text="${user.name}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.phone}"></td>
                             <td>
                                 <a href="form.html" th:href="@{'/user/alterar/' + ${user.id}}" class="btn btn-secondary btn-lg" role="button">Alterar</a>
                                 <a href="#" class="btn btn-warning btn-lg" role="button" data-toggle="modal" data-target="#confirmaExclusao" th:data-id="${user.id}">Excluir</a>
@@ -29,13 +34,13 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">ConfirmaÁ„o de exclus„o</h5>
+                            <h5 class="modal-title">Confirma√ß√£o de exclus√£o</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">X</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Confirma a exclus„o deste registro do Paciente?</p>
+                            <p>Confirma a exclus√£o deste registro do Paciente?</p>
                         </div>
                         <div class="modal-footer">
                             <a href="#" class="btn btn-warning btn-lg" id="btnConf" role="button">Sim</a>
