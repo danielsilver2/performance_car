@@ -13,7 +13,7 @@ import br.univille.projetoperformance.model.UserModel;
 import br.univille.projetoperformance.repository.UserRepository;
 
 @Controller
-@RequestMapping("/usuarios")
+@RequestMapping("/users")
 public class UserController {
 	
 	

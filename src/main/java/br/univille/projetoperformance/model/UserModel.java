@@ -19,6 +19,7 @@ public class UserModel {
 	private String email;
 	private String role;
 	@Column(length=10)
+	@Defa
 	private int type;
 	@Column(length=100)
 	private long postal_code;

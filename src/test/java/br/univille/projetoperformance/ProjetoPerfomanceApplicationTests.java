@@ -19,7 +19,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import br.univille.projetoperformance.controller.HomeController;
 import br.univille.projetoperformance.controller.PacienteController;
 
 @RunWith(SpringRunner.class)
@@ -28,8 +27,6 @@ import br.univille.projetoperformance.controller.PacienteController;
 public class ProjetoPerfomanceApplicationTests {
 
 	@Autowired
-	private HomeController homeController;
-	@Autowired
 	private PacienteController pacienteController;
 	@Autowired
 	private MockMvc mockMvc;
@@ -37,7 +34,6 @@ public class ProjetoPerfomanceApplicationTests {
 	
 	@Test
 	public void contextLoads() {
-		assertThat(homeController).isNotNull();
 		assertThat(pacienteController).isNotNull();
 
 	}

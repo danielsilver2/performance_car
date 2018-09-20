@@ -14,6 +14,4 @@ public class EmployeeController {
 		
         return new ModelAndView("employee/index", "data", "paciente");		
 	}
-	
-	
 }
