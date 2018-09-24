@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.ColumnDefault;
+
 @Entity(name="users")
 public class UserModel {
 	@Id
@@ -18,8 +20,7 @@ public class UserModel {
 	private String password;
 	private String email;
 	private String role;
-	@Column(length=10)
-	@Defa
+	@Column(columnDefinition="int default '1'") 
 	private int type;
 	@Column(length=100)
 	private long postal_code;
