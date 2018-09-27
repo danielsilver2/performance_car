@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
             .formLogin()
             .loginPage("/login")
-            .successForwardUrl("/users")
+            .defaultSuccessUrl("/users")
             .permitAll();
     }
     @Bean

@@ -27,7 +27,7 @@ public class MyUserDetailService implements UserDetailsService {
             throw new UsernameNotFoundException(email);
         }
         Collection<SimpleGrantedAuthority> listGrants = new ArrayList<>();
-        listGrants.add(new SimpleGrantedAuthority(user.getRole()));
+        listGrants.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         return new User(user.getEmail(), user.getPassword(), listGrants);
     }
 }

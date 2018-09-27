@@ -7,7 +7,7 @@
         <div class="container">
             <nav th:replace="layout :: menu">(menu)</nav>
             <div class="border border-dark">
-                <form th:action="@{/user/save}" th:object="${user}" action="#" method="post">
+                <form th:action="@{/users/save}" th:object="${user}" action="#" method="post">
                     <input type="hidden" id="txtid" th:field="*{id}" />
                     <div class="form-group">
                         <label for="txtnome">Nome</label>
