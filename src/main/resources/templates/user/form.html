@@ -7,11 +7,15 @@
         <div class="container">
             <nav th:replace="layout :: menu">(menu)</nav>
             <div class="border border-dark">
-                <form th:action="@{/users/save}" th:object="${user}" action="#" method="post">
+                <form th:action="@{/users/(form)}" th:object="${user}" action="#" method="post">
                     <input type="hidden" id="txtid" th:field="*{id}" />
                     <div class="form-group">
                         <label for="txtnome">Nome</label>
                         <input type="text" th:field="*{name}" class="form-control" id="txtnome" placeholder="Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtpwd">Senha</label>
+                        <input type="password" th:field="*{password}" class="form-control" id="txtsenha" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label for="txtphone">Telefone</label>

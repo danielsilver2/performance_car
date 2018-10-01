@@ -13,7 +13,7 @@
                         <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">E-mail</th>
-                            <th scope="col">Telefone</th>
+                            <th scope="col" class="txtphone">Telefone</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -40,7 +40,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Confirma a exclusão deste registro do Paciente?</p>
+                            <p>Confirma a exclusão deste registro do Usuário?</p>
                         </div>
                         <div class="modal-footer">
                             <a href="#" class="btn btn-warning btn-lg" id="btnConf" role="button">Sim</a>
@@ -59,6 +59,10 @@
                   var modal = $(this)
                   modal.find('#btnConf').attr("href","/users/remove/" + recipient)
                 })
+                
+                $(document).ready(function() {
+					$(".txtphone").mask("(47) 99999-9999");
+				});
            /*]]>*/
         </script>         
         <div th:include="layout :: footer" id="footer">(footer)</div>
