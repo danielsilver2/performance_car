@@ -1,5 +1,6 @@
 package br.univille.projetoperformance.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.univille.projetoperformance.model.Client;
 import br.univille.projetoperformance.model.Vehicle;
+import br.univille.projetoperformance.repository.ClientRepository;
 import br.univille.projetoperformance.repository.VehicleRepository;
 
 @Controller
@@ -25,16 +28,28 @@ public class VehicleController {
 	@Autowired
 	private VehicleRepository vehicleRepository;
 	
+	@Autowired
+	private ClientRepository clientRepository;
+	
 	@GetMapping("")
 	public ModelAndView index() {
 		List<Vehicle> vehicleList = this.vehicleRepository.findAll();
 		
-		return new ModelAndView("vehicle/index", "Vehicles", vehicleList);
+
+		return new ModelAndView("vehicle/index", "vehicles", vehicleList);
 	}
 	
 	@GetMapping("/new")
 	public ModelAndView createForm(@ModelAttribute Vehicle vehicle) {
-		return new ModelAndView("vehicle/form", "vehicle", vehicle);
+		
+		List<Client> clientList = this.clientRepository.findAll();
+		
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		
+		data.put("vehicle", vehicle);
+		data.put("clients", clientList);
+		
+		return new ModelAndView("vehicle/form", data);
 	}
 	
 	@PostMapping(params="form")
