@@ -18,7 +18,7 @@ public class Vehicle {
 	private String plate;
 	private String renavam;
 	@Column(length=4)
-	private int ano;
+	private int year;
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH})
 	private Client client;
 
@@ -52,11 +52,11 @@ public class Vehicle {
 	public void setRenavam(String renavam) {
 		this.renavam = renavam;
 	}
-	public int getAno() {
-		return ano;
+	public int getYear() {
+		return year;
 	}
-	public void setAno(int ano) {
-		this.ano = ano;
+	public void setYear(int year) {
+		this.year = year;
 	}
 	public Client getClient() {
 		return client;

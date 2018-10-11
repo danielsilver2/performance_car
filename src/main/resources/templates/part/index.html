@@ -6,29 +6,27 @@
     <body>
         <div class="container">
             <nav th:replace="layout :: menu">(menu)</nav>
-            <a href="form.html" th:href="@{/vehicles/new}" class="btn btn-primary btn-lg" role="button">Novo</a>
+            <a href="form.html" th:href="@{/parts/new}" class="btn btn-primary btn-lg" role="button">Novo</a>
             <div class="border border-dark">
                 <table class="table">
                     <thead class="thead-light"> 
                         <tr>
-                            <th scope="col">Modelo</th>
-                            <th scope="col">Fabricante</th>
-                            <th scope="col">Placa</th>
-                            <th scope="col">Ano</th>
-                            <th scope="col">Cliente</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Valor de Compra</th>
+                            <th scope="col">Valor de Venda</th>
+                            <th scope="col">Categoria</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr scope="row" th:each="vehicle : ${vehicles}">
-                            <td th:text="${vehicle.model}"></td>
-                            <td th:text="${vehicle.brand}"></td>
-                            <td th:text="${vehicle.plate}"></td>
-                      		<td th:text="${vehicle.year}"></td>
-                            <td th:text="${vehicle.client.name}"></td>
+                        <tr scope="row" th:each="part : ${parts}">
+                            <td th:text="${part.name}"></td>
+                            <td th:text="${part.sellValue}"></td>
+                            <td th:text="${part.buyValue}"></td>
+                            <td th:text="${part.category}"></td>
                             <td>
-                                <a href="form.html" th:href="@{'/vehicles/update/' + ${vehicle.id}}" class="btn btn-secondary btn-lg" role="button">Alterar</a>
-                                <a href="#" class="btn btn-warning btn-lg" role="button" data-toggle="modal" data-target="#confirmaExclusao" th:data-id="${vehicle.id}">Excluir</a>
+                                <a href="form.html" th:href="@{'/parts/update/' + ${part.id}}" class="btn btn-secondary btn-lg" role="button">Alterar</a>
+                                <a href="#" class="btn btn-warning btn-lg" role="button" data-toggle="modal" data-target="#confirmaExclusao" th:data-id="${part.id}">Excluir</a>
                             </td>
                         </tr>
                     </tbody>
@@ -44,7 +42,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>Confirma a exclusão deste registro do Veículo?</p>
+                            <p>Confirma a exclusão deste registro da Peça?</p>
                         </div>
                         <div class="modal-footer">
                             <a href="#" class="btn btn-warning btn-lg" id="btnConf" role="button">Sim</a>
@@ -60,7 +58,7 @@
                   var button = $(event.relatedTarget)
                   var recipient = button.data('id')
                   var modal = $(this)
-                  modal.find('#btnConf').attr("href","/vehicles/remove/" + recipient)
+                  modal.find('#btnConf').attr("href","/parts/remove/" + recipient)
                 })
                 
                

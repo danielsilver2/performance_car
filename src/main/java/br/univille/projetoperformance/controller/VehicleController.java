@@ -62,7 +62,15 @@ public class VehicleController {
 	
 	@GetMapping(value="update/{id}")
 	public ModelAndView alterarForm(@PathVariable("id") Vehicle vehicle) {
-	    return new ModelAndView("vehicle/form", "vehicle", vehicle);
+		
+		Client client = vehicle.getClient();
+		
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		
+		data.put("vehicle", vehicle);
+		data.put("clients", client);
+
+	    return new ModelAndView("vehicle/form", data);
 	}
 	
 	@GetMapping(value="remove/{id}")
