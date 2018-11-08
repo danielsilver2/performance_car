@@ -35,7 +35,10 @@ public class VehicleController {
 	public ModelAndView index() {
 		List<Vehicle> vehicleList = this.vehicleRepository.findAll();
 		
-
+		for (Vehicle vehicle : vehicleList) {
+			System.out.println(vehicle);
+		}
+		
 		return new ModelAndView("vehicle/index", "vehicles", vehicleList);
 	}
 	
@@ -67,8 +70,10 @@ public class VehicleController {
 		
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		
+		List<Client> clientList = this.clientRepository.findAll();
+		
 		data.put("vehicle", vehicle);
-		data.put("clients", client);
+		data.put("clients", clientList);
 
 	    return new ModelAndView("vehicle/form", data);
 	}

@@ -11,8 +11,8 @@
                     <input type="hidden" id="txtid" th:field="*{id}" />
                     <div class="form-group">
                         <label for="slcClient">Cliente</label>
-                        <select class="form-control" id="slccliente" th:field="*{client}">
-                        	<option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name}"></option>
+                        <select class="form-control" th:readonly="*{id != 0}" id="slccliente" th:field="*{client}">
+                        	<option th:each="cli : ${clients}" th:value="${cli.id}" th:text="${cli.name}"></option>
                         </select>
                     </div>
                     <div class="form-group">

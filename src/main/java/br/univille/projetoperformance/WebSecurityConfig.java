@@ -23,7 +23,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     private String[] resources = new String[]{
             "/","/about", "/register/**","/webjars/**","/include/**",
-            "/css/**","/icons/**","/image/**","/js/**","/layer/**","/webjars/**"
+            "/css/**","/icons/**","/image/**","/js/**","/layer/**","/webjars/**",
+            "/api/**"
     };
     
     @Override
@@ -51,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
+        /*
         http
         .csrf().disable()
         .authorizeRequests()
@@ -60,7 +61,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
             .loginPage("/login")
             .defaultSuccessUrl("/users")
-            .permitAll();
+            .permitAll();*/
+    	http.authorizeRequests().anyRequest().permitAll();
     }
     @Bean
     public PasswordEncoder passwordEncoder() {

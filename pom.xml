@@ -79,6 +79,26 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.1.1</version>
+				<configuration>
+				 <imageName>performance_car</imageName>
+                 <baseImage>frolvlad/alpine-oraclejdk8:slim</baseImage>
+                 <exposes>
+		            <expose>80</expose>
+		         </exposes>
+                 <entryPoint>["java", "-Dspring.profiles.active=cloud", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
